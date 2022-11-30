@@ -4,7 +4,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'MapMaker.dart';
-import 'MapMarker.dart';
+import 'Geolocation.dart';
 import 'package:latlong2/latlong.dart';
 // import 'geolocator/geolocator.dart';
 import 'constant.dart';
@@ -231,23 +231,23 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                // Expanded( //Put in gold stars for restaurant
-                                //   child: ListView.builder(
-                                //     padding: EdgeInsets.zero,
-                                //     scrollDirection: Axis.horizontal,
-                                //     itemCount: item.name,
-                                //     itemBuilder: (context, index){
-                                //       return Icon(Icons.star, color: Colors.yellow,);
-                                //     },
-                                //   ),
-                                // ),
+                                Expanded( //Put in gold stars for restaurant
+                                  child: ListView.builder(
+                                    padding: EdgeInsets.zero,
+                                    scrollDirection: Axis.horizontal,
+                                    itemCount: item.rating,
+                                    itemBuilder: (context, index){
+                                      return Icon(Icons.star, color: Colors.yellow,);
+                                    },
+                                  ),
+                                ),
                                 Expanded(
                                   flex: 2,
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        item.name ?? '',
+                                        item.title ?? '',
                                         style: TextStyle(
                                             fontSize: 20,
                                             fontWeight: FontWeight.bold,
@@ -266,7 +266,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                               padding: EdgeInsets.all(4.0),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
-                                // child: Image.network(mapMarkers[index].image),
+                                child: Image.network(mapMarkers[index].image),
                               ),
                             ),
                           ),
